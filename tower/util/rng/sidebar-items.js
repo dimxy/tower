@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["HasherRng","A [`Rng`] implementation that uses a [`Hasher`] to generate the random values. The implementation uses an internal counter to pass to the hasher for each iteration of [`Rng::next_u64`]."]],"trait":[["Rng","A simple PRNG trait for use within tower middleware."]]};
