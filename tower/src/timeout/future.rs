@@ -20,7 +20,6 @@ pin_project! {
         response: T,
         #[pin]
         sleep: Sleep,
-        /// dimxy info to help identify which request timed out
         request_info: String, 
     }
 }
