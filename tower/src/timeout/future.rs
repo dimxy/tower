@@ -8,6 +8,7 @@ use std::{
     task::{Context, Poll},
 };
 use tokio::time::Sleep;
+use tracing::log::{info, warn};
 
 pin_project! {
     /// [`Timeout`] response future
