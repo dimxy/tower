@@ -49,6 +49,7 @@ impl<S, Request> Service<Request> for Timeout<S>
 where
     S: Service<Request>,
     S::Error: Into<crate::BoxError>,
+    Request: std::fmt::Debug // must have debug for tracing request info 
 {
     type Response = S::Response;
     type Error = crate::BoxError;
@@ -62,9 +63,10 @@ where
     }
 
     fn call(&mut self, request: Request) -> Self::Future {
+        let request_info = format!("{:?}", request);
         let response = self.inner.call(request);
         let sleep = tokio::time::sleep(self.timeout);
 
-        ResponseFuture::new(response, sleep)
+        ResponseFuture::new(response, sleep, request_info)
     }
 }
